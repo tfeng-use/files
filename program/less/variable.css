@@ -1,0 +1,71 @@
+:root {
+  /* 一 色彩部分 */
+  /* 主色调 */
+  --color-primary: rgba(58, 56, 73, 1);
+  /* 主色调-light */
+  --color-primary-light: rgba(97, 96, 109, 1);
+  /* 主色调-dark */
+  --color-primary-dark: rgba(20, 19, 25, 1);
+  /* 辅助色-golden */
+  --color-golden: rgba(217, 188, 134, 1);
+  /* 主题色 */
+  /* 辅助色-info 提示信息 */
+  --color-info: rgba(45, 140, 240, 1);
+  /* 辅助色-success 成功信息 */
+  --color-success: rgba(25, 190, 107, 1);
+  /* 辅助色-warning 提醒信息 */
+  --color-warning: rgba(255, 153, 0, 1);
+  /* 辅助色-error 警示信息 */
+  --color-error: rgba(237, 64, 20, 1);
+  /* 各状态标识底色 */
+
+  /* 状态-进行中 */
+  --color-state-bg-doing: rgba(230, 247, 255, 1);
+  /* 状态-成功/完成 */
+  --color-state-bg-success: rgba(237, 249, 232, 1);
+  /* 状态-提醒 */
+  --color-state-bg-retrial: rgba(255, 244, 229, 1);
+  /* 状态-失效/无效 */
+  --color-state-bg-invalid: rgba(245, 245, 245, 1);
+  /* 状态-异常警告 */
+  --color-state-bg-error: rgba(253, 235, 231, 1);
+
+  /* 边框色 */
+  --border-color: rgba(217, 217, 217, 1);
+  /* 边框色-激活 */
+  --border-color-active: var(--color-primary);
+
+  /* 分割线 */
+  --divider-color: rgba(232, 234, 236, 1);
+
+  /* 背景色-hover */
+  --hover-color-bg: rgba(248, 248, 249, 1);
+  /* 背景色-disabled */
+  --disabled-color-bg: rgba(245, 245, 245, 1);
+
+  /* 文字色-标题 */
+  --text-color-headline: rgba(34, 34, 34, 1);
+  /* 文字色-小标 二级标 */
+  --text-color-secondary: rgba(34, 34, 34, 0.65);
+  /* 文字色-正文 */
+  --text-color-main: rgba(34, 34, 34, 1);
+  /* 文字色-表单-label */
+  --text-color-label: rgba(34, 34, 34, 0.85);
+  /* 文字色-输入框-placeholder */
+  --text-color-placeholder: rgba(34, 34, 34, 0.35);
+  /* 文字色-失效 */
+  --text-color-disabled: rgba(34, 34, 34, 0.25);
+  /* 文字色-深背景-白 */
+  --text-color-white: rgba(255, 255, 255, 1);
+
+  /* 文字色-状态-进行中  */
+  --text-color-state-blue: var(--color-info);
+  /* 文字色-状态-待确认 */
+  --text-color-state-orange: var(--color-warning);
+  /* 文字色-状态-完成 */
+  --text-color-state-green: var(--color-success);
+  /* 文字色-状态-异常 */
+  --text-color-state-red: var(--color-error);
+  /* 文字色-状态-取消 失败 */
+  --text-color-state-grey: var(--text-color-secondary);
+}
