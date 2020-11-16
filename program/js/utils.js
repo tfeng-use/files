@@ -235,3 +235,16 @@ export const getImgListFromPath = function (type) {
   })
   return arr
 }
+
+// 转换换行符
+export const toBr = function (tip) {
+  // 首先转换为数组
+  let arr = tip.split('')
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].charCodeAt(0) === 10) {
+      arr[i] = '</br>'
+    }
+  }
+  tip = arr.join('')
+  return tip
+}
