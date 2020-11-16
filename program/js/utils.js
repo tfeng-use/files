@@ -236,7 +236,7 @@ export const getImgListFromPath = function (type) {
   return arr
 }
 
-// 转换换行符
+// 转换换行符，tip是包含textArea中包含换行符的字符串
 export const toBr = function (tip) {
   // 首先转换为数组
   let arr = tip.split('')
