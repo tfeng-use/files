@@ -111,9 +111,12 @@
             flex-box="1"
           >
             <router-view />
+            <!-- 第一种slide，通过state进行设置 -->
             <slide-web v-model="showSlide" @back="onSlideBack">
               <slide-component></slide-component>
             </slide-web>
+            <!-- 第二种slide，通过bus进行设置 -->
+            <slide-enter />
           </div>
           <div id="content-loading"></div>
         </a-layout-content>
@@ -127,13 +130,15 @@ import { mapGetters, mapActions } from 'vuex'
 import bus from '@bus'
 import cookie from '@js/cookie'
 import slideComponent from '@views/common/slideComponent'
+import SlideEnter from '@/components/slideEnter/index.vue'
 import socket from '@js/socket.js'
 import { SOCKET_URL } from '@js/config.js'
 import { determineOpeningOrClosing, getGoldPrice } from '@api/goldPrice'
 export default {
   name: 'Index',
   components: {
-    slideComponent
+    slideComponent,
+    SlideEnter
   },
   created () {
     // 获取目录

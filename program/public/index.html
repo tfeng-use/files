@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" ; charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="MobileOptimized" content="240">
+  <meta name="apple-touch-fullscreen" content="YES">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="referrer" content="never">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <link rel="icon" href="<%= BASE_URL %>favicon.png">
+  <title>title</title>
+  <!-- 使用CDN的CSS文件 -->
+  <% for (var i in htmlWebpackPlugin.options.cdn &&
+  htmlWebpackPlugin.options.cdn.css) { %>
+  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet" />
+  <% } %>
+  <style>
+    .app-loading {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background: #202022;
+      transition: opacity 1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .app-loading.close {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .app-loading.close .app-loading_logo {
+      transform: scale(1.4);
+      transform-origin: bottom center;
+    }
+    .app-loading .app-loading_logo {
+      width: 40px;
+      height: 40px;
+    }
+    .app-loading_logo {
+      position: relative;
+      transition: transform 1.2s;
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but itrade-h5 doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- 首屏等待loading -->
+  <div class="app-loading">
+    <img class="app-loading_logo" src="./favicon.png" alt="">
+  </div>
+  <% for (var i in htmlWebpackPlugin.options.cdn &&
+  htmlWebpackPlugin.options.cdn.js) { %>
+  <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+  <% } %>
+  <!-- built files will be auto injected -->
+  <!-- <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js" defer></script> -->
+</body>
+
+</html>

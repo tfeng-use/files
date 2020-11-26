@@ -248,3 +248,25 @@ export const toBr = function (tip) {
   tip = arr.join('')
   return tip
 }
+
+// 将小数点转换为10进制时需要乘的倍数
+export const getMulti = value => {
+  let multiple = 1
+  if (('' + Number(value)).indexOf('.') !== -1) {
+    const digit = ('' + Number(value)).split('.')[1]
+    if (digit.length) {
+      multiple = 10 ** digit.length
+    }
+  }
+  return multiple
+}
+
+// a是否是b的整数倍
+export const isDigitTimes = (a, b) => {
+  a = +a
+  b = +b
+  const aMulti = getMulti(a)
+  const bMulti = getMulti(b)
+  const times = (((a * aMulti) / (b * bMulti)) * bMulti) / aMulti
+  return times % 1 === 0
+}
