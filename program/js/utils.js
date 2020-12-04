@@ -241,7 +241,7 @@ export const toBr = function (tip) {
   // 首先转换为数组
   let arr = tip.split('')
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i].charCodeAt(0) === 10) {
+    if (arr[i].charCodeAt(0) === 10 && arr[i].length === 1) {
       arr[i] = '</br>'
     }
   }
@@ -267,6 +267,7 @@ export const isDigitTimes = (a, b) => {
   b = +b
   const aMulti = getMulti(a)
   const bMulti = getMulti(b)
-  const times = (((a * aMulti) / (b * bMulti)) * bMulti) / aMulti
+  const times =
+    ((parseInt(a * aMulti) / parseInt(b * bMulti)) * bMulti) / aMulti
   return times % 1 === 0
 }
