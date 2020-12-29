@@ -1,0 +1,3 @@
+GET https://api.github.com/users/Huachao
+
+GET https://api.github.com/repos/Huachao/vscode-restclient HTTP/1.1

@@ -1,0 +1,17 @@
+{
+  "name": "dialog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "browser": "browser.js",
+  "style": "style.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

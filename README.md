@@ -19,3 +19,7 @@
 ## 2020/12/4
 
 - 增加轮播图的组件封装
+
+## 2020/12/29
+* 增加 babel 的测试项目 `babelTest`
+* 增加 webpack4 的测试项目 `webpackTest`

@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env", // 语法转换只是将高版本的语法转换成低版本，比如箭头函数，新的内置函数、实例方法无法转换
+      // {
+      //   "corejs": 2, // 声明corejs版本，
+      //   "useBuiltIns": "usage" // 动态加载polyfill
+      // }
+    ]
+  ],
+  "plugins": [
+    [
+        "@babel/plugin-transform-runtime", // 目的是处理注入的帮助程序，使其通过引入的方式进行使用
+        {
+          "corejs": 3 // 动态加载polyfill，防止全局污染，引入之后，@babel/preset-env下面的配置就不再需要
+        }
+    ]
+  ]
+}
