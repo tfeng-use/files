@@ -23,3 +23,6 @@
 ## 2020/12/29
 * 增加 babel 的测试项目 `babelTest`
 * 增加 webpack4 的测试项目 `webpackTest`
+
+## 2021/01/07
+* 增加project-template
