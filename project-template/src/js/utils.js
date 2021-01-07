@@ -1,3 +1,5 @@
+const serverCenter = process.env.VUE_APP_BASE_URL
+
 // 图片压缩
 export const compressImage = function (base64Str, name, needSize) {
   return new Promise(resolve => {
@@ -217,17 +219,17 @@ export const downLoadFile = function (content, fileName) {
 // 获取一个文件夹下面的所有的图片，并以一个数组的形式返回
 export const getImgListFromPath = function (type) {
   // context的第一个参数设置为变量会报错
-  let req = ''
+  const req = ''
 
   switch (type) {
     case 'deliveryCert':
-      req = require.context('@/assets/deliveryCert', false, /\.png$/)
+      // req = require.context('@/assets/deliveryCert', false, /\.png$/)
       break
     default:
       break
   }
 
-  let arr = []
+  const arr = []
   // req.keys返回所有的路径
   req.keys().forEach(url => {
     // 将url传入req，会返回可以直接使用的路径
@@ -239,7 +241,7 @@ export const getImgListFromPath = function (type) {
 // 转换换行符，tip是包含textArea中包含换行符的字符串
 export const toBr = function (tip) {
   // 首先转换为数组
-  let arr = tip.split('')
+  const arr = tip.split('')
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].charCodeAt(0) === 10 && arr[i].length === 1) {
       arr[i] = '</br>'
@@ -270,4 +272,17 @@ export const isDigitTimes = (a, b) => {
   const times =
     ((parseInt(a * aMulti) / parseInt(b * bMulti)) * bMulti) / aMulti
   return times % 1 === 0
+}
+
+// 通过角色判断是否是管理员
+export const isManagerFn = (roles = []) => {
+  let isManager = false
+  roles.every(item => {
+    if (item.roleCode === '2578639920687104' || item.name === '系统管理员') {
+      isManager = true
+      return false
+    }
+    return true
+  })
+  return isManager
 }

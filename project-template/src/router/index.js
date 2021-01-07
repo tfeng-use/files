@@ -19,21 +19,14 @@ const login = [
   }
 ]
 
-// 报价管理
-const system = [
+const test = [
   {
-    path: '/',
-    component: () => import('@views/home/home.vue')
-  }
-]
-const order = [
-  {
-    path: '/order',
-    component: () => import('@views/sales/order.vue')
+    path: '/test',
+    component: () => import('@views/test/index.vue')
   }
 ]
 
-const routes = [...system, ...order]
+const routes = [...test]
 // 主页面-其他功能页都在改页面子路由下面
 const homeRoutes = {
   path: '/',
@@ -42,11 +35,7 @@ const homeRoutes = {
 }
 // 一些需要单独显示的界面
 const externalRoutes = [
-  ...login,
-  {
-    path: '/process',
-    component: () => import('@views/sales/process.vue')
-  }
+  ...login
   // {
   // 比如打印
   // path: '/print',

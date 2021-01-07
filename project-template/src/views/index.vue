@@ -112,9 +112,9 @@
           >
             <router-view />
             <!-- 第一种slide，通过state进行设置 -->
-            <slide-web v-model="showSlide" @back="onSlideBack">
+            <!-- <slide-web v-model="showSlide" @back="onSlideBack">
               <slide-component></slide-component>
-            </slide-web>
+            </slide-web> -->
             <!-- 第二种slide，通过bus进行设置 -->
             <slide-enter />
           </div>
@@ -129,22 +129,21 @@
 import { mapGetters, mapActions } from 'vuex'
 import bus from '@bus'
 import cookie from '@js/cookie'
-import slideComponent from '@views/common/slideComponent'
+// import slideComponent from '@views/common/slideComponent'
 import SlideEnter from '@/components/slideEnter/index.vue'
-import socket from '@js/socket.js'
-import { SOCKET_URL } from '@js/config.js'
-import { determineOpeningOrClosing, getGoldPrice } from '@api/goldPrice'
+// import socket from '@js/socket.js'
+// import { SOCKET_URL } from '@js/config.js'
+
 export default {
   name: 'Index',
   components: {
-    slideComponent,
+    // slideComponent,
     SlideEnter
   },
   created () {
     // 获取目录
     this.getLeftMenu()
-    this.initSocket()
-    this.determineOpeningOrClosing()
+    // this.initSocket()
     bus.$on('updateMenuCount', () => {
       this.getAuditWaitCount(this.leftMenu)
     })
@@ -155,7 +154,6 @@ export default {
     bus.$on('go2page', item => {
       this.menuChange(item)
     })
-    this.loopRequest(this.$route.path)
   },
   beforeDestroy () {
     bus.$off('updateMenuCount')
@@ -198,21 +196,20 @@ export default {
     toggleCollapsed () {
       this.collapsed = !this.collapsed
     },
-    initSocket () {
-      socket.init(SOCKET_URL, () => {
-        bus.$emit('socket_send', {
-          id: this.$storage.get('investUser').company.companyCode,
-          code: 1,
-          token: 'junit:test',
-          type: 1
-        })
-      })
-      bus.$on('socket_on_msg', res => {})
-    },
+    // initSocket () {
+    //   socket.init(SOCKET_URL, () => {
+    //     bus.$emit('socket_send', {
+    //       id: this.$storage.get('investUser').company.companyCode,
+    //       code: 1,
+    //       token: 'junit:test',
+    //       type: 1
+    //     })
+    //   })
+    //   bus.$on('socket_on_msg', res => {})
+    // },
     getLeftMenu () {
       const allMenus = this.investUser.permissions
       this.initMenu(allMenus, this.$route.path)
-
       this.updateLeftMenu(JSON.parse(JSON.stringify(allMenus)))
     },
     initMenu (leftMenu, to) {
@@ -260,7 +257,7 @@ export default {
           }
         }
         // 如果找到路由返回父 index
-        if (path == item.router) {
+        if (path === item.router) {
           return {
             currentMenu: item,
             parentIndex: index || 0
@@ -315,15 +312,6 @@ export default {
     onSlideBack () {
       // 更新面包屑
       this.updateBreadcrumb({ type: 'back' })
-    },
-    loopRequest (path) {
-      if (this.needLoopRequestRoutes.indexOf(path) > -1) {
-        this.isOpenSaleInterval = setInterval(() => {
-          this.determineOpeningOrClosing()
-        }, 1000)
-      } else {
-        clearInterval(this.isOpenSaleInterval)
-      }
     }
   },
   watch: {
@@ -333,7 +321,7 @@ export default {
       handler (value) {
         if (value && (value.count || parseInt(value.count) === 0)) {
           this.leftMenu.forEach(item => {
-            if (item.children.length != 0) {
+            if (item.children.length !== 0) {
               item.children.forEach((inner, index) => {
                 if (inner.name === value.name) {
                   item.children[index] = value
@@ -345,9 +333,6 @@ export default {
           this.updateLeftMenu(leftMenu)
         }
       }
-    },
-    $route: function (to, from) {
-      this.loopRequest(to.path)
     }
   },
   computed: {

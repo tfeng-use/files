@@ -3,7 +3,11 @@
 import bus from '@bus'
 import cookie from '@js/cookie'
 import router from '../../router'
-let baseUrlOrigin = process.env.VUE_APP_BASE_URL
+
+const profix =
+  process.env.VUE_APP_ENV === 'production' ? '' : process.env.VUE_APP_ENV + '-'
+const baseUrlOrigin = `https://${profix}invest-api.jjh9999.com`
+
 const SUCCESS_CODE = [200]
 export default function query (
   serviceName,

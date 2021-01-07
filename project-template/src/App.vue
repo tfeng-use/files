@@ -24,7 +24,7 @@ export default {
       // 这儿处理因为刷新造成的vuex里面内容丢失的问题
       const data = this.$storage.get('investUser')
       if (data && !(this.userInfo && this.userInfo.userCode)) {
-        const { userInfo, roles } = data
+        const { userInfo } = data
         this.updateUserInfo({
           ...userInfo
         })

@@ -11,14 +11,15 @@
 <script>
 // slideEnter与SlideWrap是一个组合
 import SlideWrap from '../slideWrap/index.vue'
-import PageA from '../pageA/index.vue'
-import PageB from '../pageB/index.vue'
+// import PageA from '../pageA/index.vue'
+// import PageB from '../pageB/index.vue'
 import bus from '@bus'
 export default {
   components: {
-    SlideWrap,
-    PageA,
-    PageB
+    SlideWrap
+    // 这儿是详情页面
+    // PageA,
+    // PageB
   },
   data () {
     return {

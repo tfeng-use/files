@@ -4,7 +4,6 @@ import moment from 'moment'
 import 'moment/locale/zh-cn'
 import cookie from './cookie'
 import * as utils from './utils'
-import * as cos from './cos'
 import slideWeb from '@components/slide-web.vue'
 import Loading from '@components/loading/index'
 import stateTag from '@components/stateTag.vue'
@@ -19,6 +18,11 @@ const install = Vue => {
   })
   // 插件
   Vue.prototype.$loading = Loading
+  // 公共方法
+  Vue.prototype.$utils = utils
+  Vue.prototype.$storage = storage
+  Vue.prototype.$cookie = cookie
+  Vue.prototype.$moment = moment
 }
 export default {
   install
