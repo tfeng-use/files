@@ -104,28 +104,78 @@ export const downStreamFile = batchCode => {
   document.body.removeChild(form)
 }
 
-// 千分隔，用于金额的显示，showHorizontal 是否显示--
-export const milliFormat = (num, count = 2, showHorizontal) => {
-  // 如果为非0的falsy
-  if (!!num === false && num !== 0 && showHorizontal) {
-    return '--'
+// 保留小数位
+export const formatDecimal = (num, digit = 2, carry = 5) => {
+  if (typeof num === 'string') {
+    num = +num
   }
-  if (!!num === false) {
-    if (count) {
-      const num = 0
-      return num.toFixed(count)
-    }
-    return 0
+  // 将num转换为str，并保证有足够的0，同时避免 0.0000000000000001 默认解析为指数形式
+  let str = num.toFixed(18)
+  console.log('str', str)
+  let arr = str.split('.')
+
+  console.log('arr', arr)
+  let decimal = arr[1].slice(0, digit + 1)
+  console.log('decimal', decimal)
+
+  let lastNum = decimal.slice(-1)
+  console.log('lastNum', lastNum)
+
+  // let tempNum = +(arr[0] + decimal.slice(0, digit))
+  // 这儿做所以用1加上，是为了避免小数位为 00001时，把前面的0给去掉了
+  let tempNum = +(1 + decimal.slice(0, digit))
+  // console.log('tempNum', tempNum)
+
+  // 处理进位
+  if (lastNum >= carry) {
+    tempNum = tempNum + 1
   }
-  num = (+num).toFixed(count)
-  const [integer, decimal] = num.split('.')
-  let value = integer.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
-  if (decimal) {
-    value = `${value}.${decimal}`
+  tempNum = tempNum + ''
+  let integer = arr[0]
+  if (tempNum[0] > 1) {
+    // 说明进位到整数位
+    integer = Math.abs(+integer) + 1 + ''
   }
-  return value
+  // 获取小数位，并补全
+  decimal = tempNum.slice(1).padEnd(0, digit)
+
+  tempNum = tempNum + ''
+  if (digit === 0) {
+    // 特殊处理digit为0的情况
+    return integer
+  }
+  return `${integer}.${decimal}`
 }
 
+// 千分隔，用于金额的显示，showHorizontal 是否显示--
+export const milliFormat = (num, count = 2, { empty = '--' } = {}) => {
+  if (isNaN(num) || num === null) {
+    if (typeof num === 'string') {
+      // 如果是已经格式化的就直接返回
+      if (!isNaN(+num.replace(/,/g, ''))) {
+        return num
+      }
+    }
+    if (empty === 0) {
+      // 如果空用0表示
+      num = 0
+      return num.toFixed(count)
+    }
+    return empty
+  }
+
+  num = formatDecimal(num, count)
+  let [integer, decimal] = num.split('.')
+  integer = integer.replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+  if (decimal) {
+    if (+integer === 0 && +decimal === 0) {
+      return `${+integer}.${decimal}`
+    }
+    return `${integer}.${decimal}`
+  } else {
+    return integer
+  }
+}
 // 数字转中文
 export const digitalToUppercase = n => {
   n = +n
