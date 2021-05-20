@@ -336,3 +336,16 @@ export const isManagerFn = (roles = []) => {
   })
   return isManager
 }
+
+export const calcFormula = (str, ...params) => {
+  const arr = str.split('')
+  let index = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 'x') {
+      arr[i] = params[index] + ''
+      index++
+    }
+  }
+  str = arr.join('')
+  return eval(str)
+}
