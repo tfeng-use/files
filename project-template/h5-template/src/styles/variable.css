@@ -1,0 +1,86 @@
+:root {
+  /* 一 色彩部分 */
+  /* 文字主色调 */
+  --color-primary: rgba(230, 30, 22, 1);
+  /* 主题背景色 */
+  --theme-bg-color: rgba(195, 37, 45, 1);
+  --theme-color: #C3252D;;
+  /* 主色调-light */
+  --color-primary-light: rgba(97, 96, 109, 1);
+  /* 主色调-dark */
+  --color-primary-dark: rgba(20, 19, 25, 1);
+  /* 辅助色-golden */
+  --color-golden: rgba(248, 233, 181, 1);
+  --color-golden-8: rgba(248, 233, 181, 0.8);
+  /* 辅助色-info 提示信息 */
+  --color-add-info: rgba(87, 107, 149, 1);
+  --color-list-info: rgba(184, 151, 108, 1);
+  --color-add-label: #646566;
+  /* 辅助色-success 成功信息 */
+  --color-success: #2ebf6b;
+  /* 辅助色-warning 提醒信息 */
+  --color-warning: rgba(255, 153, 0, 1);
+  /* 辅助色-error 警示信息 */
+  --color-error: #fa5151;
+  /* 辅助色 链接颜色 */
+  --color-link: rgba(87, 107, 149, 1);
+  /* 各状态标识底色 */
+  /* 状态-进行中 */
+  --color-state-bg-doing: rgba(230, 247, 255, 1);
+  /* 状态-成功/完成 */
+  --color-state-bg-success: rgba(237, 249, 232, 1);
+  /* 状态-提醒 */
+  --color-state-bg-retrial: rgba(255, 244, 229, 1);
+  /* 状态-失效/无效 */
+  --color-state-bg-invalid: rgba(245, 245, 245, 1);
+  /* 状态-异常警告 */
+  --color-state-bg-error: rgba(253, 235, 231, 1);
+  /* 状态-btn 主色调 */
+  --color-primary-btn: #d6a55e;
+  /* 边框色 */
+  --border-color: #ebedf0;
+  /* 边框色-激活 */
+  --border-color-active: var(--color-primary);
+
+  /* 分割线 */
+  --divider-color: rgba(232, 234, 236, 1);
+
+  /* 背景色-hover */
+  --hover-color-bg: rgba(248, 248, 249, 1);
+  /* 背景色-disabled */
+  --disabled-color-bg: #ebedf0;
+
+  /* 文字色-标题 */
+  --text-color-headline: rgba(150, 151, 153, 1);
+  /* 文字色-小标 二级标 */
+  --text-color-secondary: rgba(150, 151, 153, 1);
+  /* 文字色-正文 */
+  --text-color-main: rgba(0, 0, 0, 1);
+  /* 文字色-二级文本 */
+  --text-color-minor: rgba(100, 101, 102, 1);
+  /* 文字色-表单-label */
+  --text-color-label: rgba(34, 34, 34, 0.85);
+  /* 文字色-输入框-placeholder */
+  --text-color-placeholder: #ddd;
+  /* 文字色-失效 */
+  --text-color-disabled: #ccc;
+  /* 文字色-深背景-白 */
+  --text-color-white: rgba(255, 255, 255, 1);
+
+  /* 文字色-状态-进行中  */
+  --text-color-state-blue: var(--color-list-info);
+  /* 文字色-状态-待确认 */
+  --text-color-state-orange: var(--color-warning);
+  /* 文字色-状态-完成 */
+  --text-color-state-green: var(--color-golden);
+  /* 文字色-状态-异常 */
+  --text-color-state-red: var(--color-error);
+  /* 文字色-状态-取消 失败 */
+  --text-color-state-grey: var(--text-color-secondary);
+  --font-family: PingFangSC-Regular, PingFang SC, 微软雅黑, Microsoft YaHe;
+  --family-medium: PingFangSC-Medium, 微软雅黑, Microsoft YaHe;
+  /* 数字字体 */
+  --family-number: Avenir, PingFang SC, Helvetica Neue, Arial, sans-serif;
+  --family-heavy-number: Avenir-Heavy, PingFang SC, Helvetica Neue, Arial,
+    sans-serif;
+}

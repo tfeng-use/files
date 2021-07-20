@@ -1,0 +1,16 @@
+
+POST https://public-api.jjh9999.com/nodebase/v1/wechat/createMpQrCodeUrlWithParams HTTP/1.1
+content-type: application/json
+
+{
+    "wx_app_name": "WXMP_REPURCHASE",
+    "timestamp": "1234567890",
+    "message": {
+        "action_name": "QR_LIMIT_STR_SCENE",
+        "action_info": {
+            "scene": {
+                "scene_str": "promoUid=11123123121&configCode=2&nick=邓羽浩"
+            }
+        }
+    }
+}

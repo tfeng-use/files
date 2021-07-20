@@ -1,0 +1,309 @@
+html,
+body {
+  height: 100%;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 14px;
+  }
+}
+.loop_fs(@countf )when(@countf >= 10) {
+  .fs@{countf} {
+    // font-size: @countf / 16 * 1rem;
+    font-size: @countf * 1px;
+  }
+
+  .loop_fs((@countf - 2));
+}
+
+.fs(@size) {
+  font-size: @size / 16 * 1rem;
+}
+
+.loop_padding(@n) when (@n >=0) {
+  .p@{n} {
+    padding: @n * 1px;
+  }
+  .pw@{n} {
+    padding-left: @n * 1px;
+    padding-right: @n * 1px;
+  }
+  .ph@{n} {
+    padding-top: @n * 1px;
+    padding-bottom: @n * 1px;
+  }
+  .m@{n} {
+    margin: @n * 1px;
+  }
+  .mw@{n} {
+    margin-left: @n * 1px;
+    margin-right: @n * 1px;
+  }
+  .mh@{n} {
+    margin-top: @n * 1px;
+    margin-bottom: @n * 1px;
+  }
+  //循环调用自身
+  .loop_padding((@n - 2));
+}
+.loop_mrgin(@n) when (@n >=0) {
+  .mt@{n} {
+    margin-top: @n * 1px;
+  }
+  .mr@{n} {
+    margin-right: @n * 1px;
+  }
+
+  .mb@{n} {
+    margin-bottom: @n * 1px;
+  }
+
+  .ml@{n} {
+    margin-left: @n * 1px;
+  }
+
+  .pt@{n} {
+    padding-top: @n * 1px;
+  }
+
+  .pr@{n} {
+    padding-right: @n * 1px;
+  }
+
+  .pb@{n} {
+    padding-bottom: @n * 1px;
+  }
+
+  .pl@{n} {
+    padding-left: @n * 1px;
+  }
+  //循环调用自身
+  .loop_mrgin((@n - 2));
+}
+
+body {
+  .loop_padding(72);
+  .loop_mrgin(72);
+  .loop_fs(60);
+}
+.w100 {
+  width: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.wh100 {
+  width: 100%;
+  height: 100%;
+}
+
+.br4 {
+  border-radius: 4px;
+}
+.br6 {
+  border-radius: 6px;
+}
+.br8 {
+  border-radius: 8px;
+}
+
+.color3 {
+  color: #333;
+}
+.color9 {
+  color: #999;
+}
+
+#app {
+  .pw_base {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .ph_base {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .mw_base {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}
+
+.scale_touch {
+  padding: 1em;
+  margin: -1em;
+}
+.nowrap {
+  white-space: nowrap;
+}
+
+.font500 {
+  font-weight: 500;
+}
+.font800 {
+  font-weight: 800;
+}
+.font_bold {
+  font-weight: 600;
+}
+
+.font_normal {
+  font-weight: normal;
+}
+
+.cursor_p {
+  cursor: pointer;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.position_r {
+  position: relative;
+}
+.position_a {
+  position: absolute;
+}
+
+.full_wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.text_c {
+  text-align: center;
+}
+
+.text_l {
+  text-align: left;
+}
+
+.text_r {
+  text-align: right;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.clearfix {
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+}
+
+.bg_white, .bg_f{
+  background:#fff;
+}
+.hide {
+  display: none;
+}
+
+.over_hide {
+  overflow: hidden;
+}
+
+.over_auto {
+  overflow-y: auto;
+}
+
+.border_t {
+  border-top: 1px solid var(--border-color);
+}
+.border_b {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.right2l-enter-active, .right2lback-enter-active, .right2l-leave-active, .right2lback-leave-active
+ {
+  width:100vw;
+  transition: all .2s linear;
+}
+
+.right2l-enter-from {
+  transform: translate3d(100%, 0, 0);
+}
+.right2l-leave-to {
+  transform: translate3d(-30%, 0, 0);
+}
+// 进入的页面
+.right2l-enter-active {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background: var(--disabled-color-bg);
+}
+// 离开的页面
+.right2lback-leave-active {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  background: var(--disabled-color-bg);
+}
+.right2lback-enter-from {
+  transform: translate3d(-30%, 0, 0);
+  z-index: 0;
+}
+
+.right2lback-leave-to {
+  transform: translate3d(100%, 0, 0);
+  z-index: 999;
+}
+
+#app {
+  .right2lback-enter,
+  .right2lback-enter-active {
+    z-index: 0;
+  }
+}
+.alg_c {
+  text-align: center;
+}
+.alg_f {
+  text-align: left;
+}
+.alg_r {
+  text-align: right;
+}
+
+.showPoint {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mint-searchbar-inner {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex: 1;
+  height: 28px;
+  padding: 4px 6px;
+}
+.mint-searchbar-inner .mintui-search {
+  color: #666;
+  font-size: 16px;
+}
+
+.amap-logo, .amap-copyright {
+  display: none !important;
+}
