@@ -38,3 +38,24 @@
 
 ## 2021/07/20
 * 增加了h5样式里面的安全区域
+* position.js使用
+```javascript
+// 引入 nextTick、onActivated、store
+
+function handlegoDetail (item) {
+  store.commit('position/SET_POSITION_CACHE', wrapperClass)
+  // ....
+}
+
+onActivated(() => {
+  // 如果是从我的页面和确认页面都进行刷新
+  if (
+    store.getters.fromRouter.indexOf('/xxx') === -1) {
+    init()
+  } else {
+    nextTick(() => {
+      store.commit('position/KEEP_SCROLL', wrapperClass)
+    })
+  }
+})
+```
